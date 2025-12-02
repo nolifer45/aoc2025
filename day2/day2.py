@@ -32,20 +32,37 @@ def check_repeat(number_list: int):
     for number in number_list:
         if len(str(number)) % 2 == 0:
            if split_string_in_halfs(str(number)):
+               print("It's a match!", number)
                repeat += number
     return repeat
 
 
 def split_string_in_halfs(string: str):
+    print("Splitting string in halfs...")
+    print(string)
+    print(len(string) % 2)
     if len(string) % 2 == 0:
         a = string[:len(string) // 2]
         b = string[len(string) // 2:]
         if a == b:
-            return int(a+b)
+            return True
+        elif split_string_in_halfs(a) or split_string_in_halfs(b):
+            return True
+    else:
+        return False
+
+def check_next_char(string: str):
+    seq = ""
+    seq2 = ""
+    for char in string:
+        if seq:
+            if char == seq[0]:
+        seq += char
+
 
 
 def main():
-    intervals = parser(test_data)
+    intervals = parser(test_data2)
     true_intervals = []
     total= 0
     for interval in intervals:
